@@ -1,0 +1,87 @@
+#Comandos para instalação do python
+
+#SO
+**pra instalar versoes mais recentes do python no linux**
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.12 python3.12-venv python3.12-distutils
+sudo apt install python3
+sudo apt install
+sudo apt install python3.12-venv
+
+#VSCODE extensions
+- Python
+- Pylance
+- Python Debugger
+- Django > batisteo.vscode-django
+- Flake8
+
+#GIT
+#optional >> ssh-keygen
+git config --global user.name "Jonathas Campos Pimenta"
+git config --global user.email "dontemaster@outlook.com"
+git config --global init.defaultBranch main
+git init
+git remote add origin git@github.com:masterdonte/django-project1.git
+git remote get-url origin
+git remote -v
+
+#CRIAR AMBIENTE VIRTUAL
+python -m venv venv
+-Ativação do venv
+--Windows: .\venv\Scripts\activate
+--Linux   :source ./venv/bin/activate
+--python -m pip install pip setuptools wheel --upgrade
+
+#INICIAR PROJETO DJANGO
+- pip install mypy
+- pip freeze
+- pip install pytest pytest-django
+- pip install django
+- pip install faker
+- pip install pillow
+- pip install coverage
+- django-admin startproject project .
+- django-admin help #para verificar se ta no venv
+- pip install parameterized
+- pip freeze > requirements.txt
+- pip install -r requirements.txt
+
+#RODAR O SERVICO
+- python manage.py runserver
+**configurar um launch.json para facilitar(RUN AND DEBUG)
+
+#CRIAR UM APP
+- python manage.py startapp <nomea_pp>
+
+#Outros comandos
+python manage.py migrate
+python manage.py makemigrations
+python manage.py createsuperuser
+python manage.py shell
+
+#Tests
+- Test Runner do Pytest
+> pytest
+- Test Runner do Unittest (padrão do Django)
+> python manage.py test
+
+# Coverage
+> coverage run --omit='*/venv/*' -m pytest
+# Coverage com omit no coveragerc
+> coverage run -m pytest
+> coverage html
+
+from django.contrib.auth.models import User
+new_user = User.objects.create_user(
+	first_name = "John",
+	last_name = "Doe",
+	username = "johndoe",
+	email = "johndoe@email.com",
+	password = "john@doe1234"
+)
+
+new_user = User.objects.create_user(first_name="Jurema", last_name="Pimenta", username="jurema", email="jurmea@email.com", password="jur@ema1234")
+
+#no settings do vscode adicionar "python.venvPath": "${workspaceFolder}", pra sempre pegar o python do venv
+

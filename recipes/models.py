@@ -10,7 +10,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
     def __str__(self):
-        return self.name   
+        return self.name
 
 
 class Recipe(models.Model):
@@ -35,4 +35,5 @@ class Recipe(models.Model):
     )
 
     def __str__(self):
-        return self.title + ' | ' + self.created_at.strftime("%Y-%m-%d")
+        # return self.title + ' | ' + self.created_at.strftime("%Y-%m-%d")
+        return self.title
