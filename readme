@@ -55,10 +55,10 @@ python -m venv venv
 - python manage.py startapp <nomea_pp>
 
 #Outros comandos
-python manage.py migrate
-python manage.py makemigrations
-python manage.py createsuperuser
-python manage.py shell
+> python manage.py makemigrations
+> python manage.py migrate
+> python manage.py createsuperuser -> Criar um super usuario ('john','1234')
+> python manage.py shell
 
 #Tests
 - Test Runner do Pytest
@@ -83,5 +83,15 @@ new_user = User.objects.create_user(
 
 new_user = User.objects.create_user(first_name="Jurema", last_name="Pimenta", username="jurema", email="jurmea@email.com", password="jur@ema1234")
 
+from faker import Faker
+from recipes.models import Recipe
+r = Recipe.objects.get(id=2)
+for i in range(20): r.id = None; r.title += str(i); r.save();
+recipes = Recipe.objects.all()
+for index, recipe in enumerate(recipes): recipe.slug = f'{recipe.slug}-{index}'; recipe.save();
+for index, recipe in enumerate(recipes): print(str(index) + ' ' + recipe.slug);
+# slug = models.SlugField(unique=True)
+> python manage.py makemigrations
+> python manage.py migrate
 #no settings do vscode adicionar "python.venvPath": "${workspaceFolder}", pra sempre pegar o python do venv
 
