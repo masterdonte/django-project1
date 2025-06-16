@@ -50,3 +50,14 @@ class RecipeSearchViewTest(RecipeBaseTest):
 
         self.assertIn(recipe1, response3.context['recipes'])
         self.assertIn(recipe2, response3.context['recipes'])
+
+    def test_recipe_search_without_parameter_page(self):
+        for i in range(1, 21):
+            self.make_recipe(title=f'title-{i}', slug=f'slug-{i}', author_data={'username': f'user-{i}'})
+        url = reverse('recipes:search')
+        response = self.client.get(f'{url}?page=any&q=title')
+        pagination_range = response.context['pagination_range']
+        recipes = response.context['recipes']
+        self.assertEqual(pagination_range['current_page'], 1)
+        self.assertEqual(recipes.paginator.count, 20)
+        # self.assertEqual(recipes.paginator.per_page, 9)

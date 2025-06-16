@@ -41,6 +41,7 @@ python -m venv venv
 - pip install faker
 - pip install pillow
 - pip install coverage
+- pip install python-dotenv
 - django-admin startproject project .
 - django-admin help #para verificar se ta no venv
 - pip install parameterized
@@ -90,8 +91,10 @@ for i in range(20): r.id = None; r.title += str(i); r.save();
 recipes = Recipe.objects.all()
 for index, recipe in enumerate(recipes): recipe.slug = f'{recipe.slug}-{index}'; recipe.save();
 for index, recipe in enumerate(recipes): print(str(index) + ' ' + recipe.slug);
+for i in range(600, 700): r.id = None; r.slug = f'slug-{i}'; r.title = f'titre-{i}'; r.save();
 # slug = models.SlugField(unique=True)
 > python manage.py makemigrations
 > python manage.py migrate
 #no settings do vscode adicionar "python.venvPath": "${workspaceFolder}", pra sempre pegar o python do venv
-
+ python -c "import string as s;from random import SystemRandom as sr;print(''.join(sr().choices(s.ascii_letters + s.punctuation, k=64)))"
+# > sqlite3 /home/donte/codes/django-project1/db.sqlite3
